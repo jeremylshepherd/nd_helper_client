@@ -1,0 +1,60 @@
+@import "../scss/variables";
+
+.task {
+  width: 350px;
+  height: 350px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.5);
+  color: white;
+  font-family: $GH-font;
+  margin-bottom: 10px;
+
+  &-pending {
+    background-color: $red;
+    background-image: url(./black-paper.png);
+    background-blend-mode: color-dodge;
+  }
+
+  &-inProgress {
+    background-color: $yellow;
+    background-image: url(./black-paper.png);
+    background-blend-mode: color-dodge;
+  }
+
+  &-complete {
+    background-color: $green;
+    background-image: url(./black-paper.png);
+    background-blend-mode: color-dodge;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    &-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  }
+
+  &-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+
+    &-status {
+      &-text {
+        margin-right: 5px;
+      }
+    }
+  }
+}
