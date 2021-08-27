@@ -40,12 +40,17 @@
 }
 
 .form-btn-group {
-  position: sticky;
+  position: absolute;
+  top: calc(100vh - 80px);
   left: 1em;
   bottom: 1em;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 120px;
+}
+
+.form-btn-group .btn {
+  margin-right: 0.5em;
 }

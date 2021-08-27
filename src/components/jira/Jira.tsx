@@ -27,11 +27,14 @@ export const Jira = (props: JiraProps) => {
             <strong>Alright!</strong><span>{`Branch - ${branch} copied to clipboard!`}</span>
         </div>
     );
+    const refTitle = title.length > 63 
+                     ? `${title.substr(0, 60).trimEnd()}...`
+                     : title;
 
-    return (
+    return (        
         <div className="jira py-2">
-            <a href={url} target="_blank" rel="noreferrer">{title}</a>
-            <div className="input-group px-3 py-1">
+            <a href={url} target="_blank" rel="noreferrer">{refTitle}</a>
+            <div className="input-group px-3 py-3">
                 <input type="text" className="form-control" ref={inputRef} value={branch}/>
                 <div className="input-group-append">
                     <button className="btn btn-info" onClick={copyToClipboard}>Copy</button>
