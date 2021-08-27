@@ -13,7 +13,7 @@ export const Jira = (props: JiraProps) => {
 
     const flashMessage = () => {
         setAlert(true);
-        setTimeout(() => setAlert(false), 10000);
+        setTimeout(() => setAlert(false), 2500);
     }
 
     const copyToClipboard = () => {
@@ -22,14 +22,22 @@ export const Jira = (props: JiraProps) => {
         flashMessage();
     }
 
+    const renderAlert = () => (
+        <div className="alert alert-success fixed-top">
+            <strong>Alright!</strong><span>{`Branch - ${branch} copied to clipboard!`}</span>
+        </div>
+    );
+
     return (
-        <div className="jira">
+        <div className="jira py-2">
             <a href={url} target="_blank" rel="noreferrer">{title}</a>
-            <div className="form-group">
+            <div className="input-group px-3 py-1">
                 <input type="text" className="form-control" ref={inputRef} value={branch}/>
-                <button className="btn btn-primary" onClick={copyToClipboard}>Copy</button>
+                <div className="input-group-append">
+                    <button className="btn btn-info" onClick={copyToClipboard}>Copy</button>
+                </div>
             </div>
-            {alert && <span className="jira-alert">{alert && `{branch} copied to clipboard!`}</span> }
+            {alert && renderAlert() }
         </div>
     );
 };

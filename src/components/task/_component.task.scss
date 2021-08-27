@@ -1,4 +1,4 @@
-@import "../scss/variables";
+@import "../../scss/variables";
 
 .task {
   width: 350px;
@@ -11,7 +11,8 @@
   box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.5);
   color: white;
   font-family: $GH-font;
-  margin-bottom: 10px;
+  margin-right: 0.25em;
+  margin-bottom: 0.5em;
 
   &-pending {
     background-color: $red;
