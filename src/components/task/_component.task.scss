@@ -1,8 +1,8 @@
 @import "../../scss/variables";
 
 .task {
-  width: 350px;
-  height: 350px;
+  width: clamp(300px, 350px, 30vw);
+  height: clamp(300px, 350px, 30vw);
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -48,6 +48,20 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
 
+      &-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
       &::-webkit-scrollbar {
         display: none;
       }
@@ -66,22 +80,23 @@
     .alert {
       width: 80%;
       height: 60%;
+
+      .form-group {
+        width: 100%;
+        margin: 0 auto;
+      }
     }
 
-    .cb {
-      &-group {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        justify-content: space-around;
-      }
-      &-row {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
+    .cb-group {
+      padding: 1em;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-around;
+
+      .btn {
+        width: 45%;
       }
     }
   }

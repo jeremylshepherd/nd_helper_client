@@ -9,7 +9,7 @@ interface SideBarProps {
 
 function SideBar(props: SideBarProps) {
     const { jiras } = props;
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const jiraList = jiras.map((jira : Jira) => <JiraView key={jira.branch} {...jira} />);
     
     return (

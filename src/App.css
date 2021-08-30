@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
 
+body {
+  overflow-x: hidden;
+  background-image: url(./components/task/black-paper.png);
+  background-blend-mode: screen;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .App {
   text-align: center;
 }
@@ -40,7 +50,7 @@
 }
 
 .form-btn-group {
-  position: absolute;
+  position: fixed;
   top: calc(100vh - 80px);
   left: 1em;
   bottom: 1em;

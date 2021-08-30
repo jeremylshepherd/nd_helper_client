@@ -30,13 +30,13 @@ function TaskList(props: TaskListProps) {
     return (
         <div className="task-list">
             <div className="task-list-column">
-                {pendingList.map((t : Task) => <TaskView key={t.id} {...t} />)}
+                <div className="task-list-column-content">{pendingList.map((t : Task) => <TaskView key={t.id} {...t} />)}</div>
             </div>
             <div className="task-list-column">
-                {inProgressList.map((t : Task) => <TaskView key={t.id} {...t} />)}
+                <div className="task-list-column-content">{inProgressList.map((t : Task) => <TaskView key={t.id} {...t} />)}</div>
             </div>
             <div className="task-list-column">
-                {completeList.map((t : Task) => <TaskView key={t.id} {...t} />)}
+                <div className="task-list-column-content">{completeList.map((t : Task) => <TaskView key={t.id} {...t} />)}</div>
             </div>
         </div>
     )

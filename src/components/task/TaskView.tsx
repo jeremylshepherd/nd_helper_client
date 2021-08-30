@@ -23,20 +23,23 @@ function TaskView(props: TaskViewProps) {
     const dateString = new Date(id).toLocaleDateString('en-us', { month: 'long', year: 'numeric', day: '2-digit'});
     const renderStatusUpdate = () => (
         <div className="task-alert">
-            <div className="alert alert-success">
-                <strong>Update Task Status!</strong>
-                <form className="form-group">
+            <div className="alert alert-info">                
+                <form className="form-group form-check">
+                    <strong>Update Task Status!</strong>
                     <div className="cb-group">
                         {
                             Object.keys(Status).map(key => (
                                 <div className="cb-row text-left">
-                                    <input type="checkbox" name={key} value={key} />
-                                    <div className="text-left">{key}</div>
+                                    <input className="form-check-input" type="checkbox" name={key} value={key} id={key} />
+                                    <label htmlFor={key} className="form-check-label">{key}</label>
                                 </div>
                             )) 
                         }
                     </div>
-                    <button className="btn btn-danger" onClick={e => {e.preventDefault(); setShowUpdate(false)}}>Close</button>
+                    <div className="button-group">
+                        <button className="btn btn-danger" onClick={e => {e.preventDefault(); setShowUpdate(false)}}>Close</button>
+                        <button className="btn btn-primary" onClick={e => {e.preventDefault(); setShowUpdate(false)}}>Update</button>
+                    </div>
                 </form>            
             </div>
         </div>
