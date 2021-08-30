@@ -43,6 +43,13 @@ function App() {
   const [newJira, setNewJira] = useState<Boolean>(false);
   const [newTask, setNewTask] = useState<Boolean>(false);
 
+  async function updateTask(task:Task) {
+    const idx = taskList.findIndex(t => t.id === task.id);
+    const tasksCopy = [...taskList];
+    tasksCopy.splice(idx, 1);
+    updateItemList(tasksAPI, tasksCopy, setTaskList, task);
+}
+
   useEffect(() => {
     getItems(jirasAPI, setJiraList);
     getItems(tasksAPI, setTaskList);
@@ -56,9 +63,9 @@ function App() {
       <h1 className="text-center">Jeremy's Newsdesk Helper</h1>
       <h3 className="text-center">Tasks</h3>
       <SideBar jiras={jiraList} />
-      <TaskList tasks={taskList} />
+      <TaskList tasks={taskList} updateTask={updateTask} />
       {newJira && <JiraForm jiras={jiraList} closeForm={closeJira}  setJiras={setJiraList} api={jirasAPI} update={updateItemList} />}
-      {newTask && <TaskForm tasks={taskList} closeForm={closeTask}  setTaskList={setTaskList} api={tasksAPI} update={updateItemList}/> }
+      {newTask && <TaskForm tasks={taskList} closeForm={closeTask}  setTaskList={setTaskList} api={tasksAPI} update={updateItemList} /> }
       <div className="form-btn-group">
         <button className="btn btn-info" onClick={() => setNewJira(true)}><i className="fab fa-jira" /></button>
         <button className="btn btn-info" onClick={() => setNewTask(true)}><i className="fas fa-tasks" /></button>

@@ -3,11 +3,12 @@ import TaskView from './TaskView';
 import { Task } from '../../types';
 
 interface TaskListProps {
-    tasks: Task []
+    tasks: Task [],
+    updateTask: Function
 }
 
 function TaskList(props: TaskListProps) {
-    const { tasks } = props;
+    const { tasks, updateTask } = props;
     const [pendingList, setPendingList] = useState<Task[]>([]);
     const [inProgressList, setInProgressList] = useState<Task[]>([]);
     const [completeList, setCompleteList] = useState<Task[]>([]);
@@ -30,13 +31,13 @@ function TaskList(props: TaskListProps) {
     return (
         <div className="task-list">
             <div className="task-list-column">
-                <div className="task-list-column-content">{pendingList.map((t : Task) => <TaskView key={t.id} {...t} />)}</div>
+                <div className="task-list-column-content">{pendingList.map((t : Task) => <TaskView key={t.id} {...t} updateTask={updateTask} />)}</div>
             </div>
             <div className="task-list-column">
-                <div className="task-list-column-content">{inProgressList.map((t : Task) => <TaskView key={t.id} {...t} />)}</div>
+                <div className="task-list-column-content">{inProgressList.map((t : Task) => <TaskView key={t.id} {...t} updateTask={updateTask} />)}</div>
             </div>
             <div className="task-list-column">
-                <div className="task-list-column-content">{completeList.map((t : Task) => <TaskView key={t.id} {...t} />)}</div>
+                <div className="task-list-column-content">{completeList.map((t : Task) => <TaskView key={t.id} {...t} updateTask={updateTask} />)}</div>
             </div>
         </div>
     )

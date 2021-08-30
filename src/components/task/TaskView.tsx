@@ -1,4 +1,3 @@
-import { spawn } from 'child_process';
 import React, { useState } from 'react';
 import { Status } from '../../types';
 import './_component.task.scss';
@@ -7,11 +6,12 @@ interface TaskViewProps {
     id: number,
     task: string,
     comments?: string,
-    status: Status
+    status: Status,
+    updateTask: Function
 }
 
 function TaskView(props: TaskViewProps) {
-    const { id, task, comments, status } = props;
+    const { id, task, comments, status, updateTask } = props;
     const [currentStatus, setCurrentStatus] = useState(status);
     const [showUpdate, setShowUpdate] = useState(false);
     const statusIcon = {
@@ -30,7 +30,7 @@ function TaskView(props: TaskViewProps) {
                         {
                             Object.keys(Status).map(key => (
                                 <div className="cb-row text-left">
-                                    <input className="form-check-input" type="checkbox" name={key} value={key} id={key} />
+                                    <input className="form-check-input" type="checkbox" name={key} value={key} id={key} onClick={handleStatusUpdate}/>
                                     <label htmlFor={key} className="form-check-label">{key}</label>
                                 </div>
                             )) 
@@ -38,12 +38,31 @@ function TaskView(props: TaskViewProps) {
                     </div>
                     <div className="button-group">
                         <button className="btn btn-danger" onClick={e => {e.preventDefault(); setShowUpdate(false)}}>Close</button>
-                        <button className="btn btn-primary" onClick={e => {e.preventDefault(); setShowUpdate(false)}}>Update</button>
+                        <button className="btn btn-primary" onClick={e => {e.preventDefault(); updateTaskStatus()}}>Update</button>
                     </div>
                 </form>            
             </div>
         </div>
     );
+
+    const handleStatusUpdate = (e : any) => {
+        let value = e.target.value;
+        let stat : Status;
+        if (value === 'INPROGRESS') {
+            stat = Status.INPROGRESS;
+        } else if(value === 'COMPLETE') {
+            stat = Status.COMPLETE;
+        } else {
+           stat = Status.PENDING;
+        }
+        setCurrentStatus(stat);
+    };
+
+    const updateTaskStatus = () => {
+        let updatedTask = { id, task, comments, status: currentStatus };
+        updateTask(updatedTask);
+        setShowUpdate(false);
+    }
 
     return (
         <div className={`task task-${status}`}>
