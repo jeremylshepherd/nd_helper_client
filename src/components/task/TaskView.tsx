@@ -64,13 +64,22 @@ function TaskView(props: TaskViewProps) {
         setShowUpdate(false);
     }
 
+    const renderComments = () => {
+        let commentsArray = comments?.split('\n');
+        return (
+            <ul>
+                {commentsArray?.map((com, i) => <li key={i} className="text-left">{com}</li>)}
+            </ul>
+        );
+    }
+
     return (
         <div className={`task task-${status}`}>
             {comments ? 
             <h3 className="task-heading">{task}</h3>
             : <h2 className="task-heading">{task}</h2>
             }
-            {comments && <p className="task-body">{comments}</p>}
+            {comments && <p className="task-body">{renderComments()}</p>}
             <div className="task-footer">
                 <div className="task-footer-date">{dateString}</div>
                 <div className="task-footer-status">

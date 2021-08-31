@@ -15,22 +15,67 @@
   margin-bottom: 0.5em;
   position: relative;
 
+  // &-body {
+  //   ul {
+  //     list-style: square;
+  //   }
+  // }
+
   &-pending {
     background-color: $red;
     background-image: url(./black-paper.png);
     background-blend-mode: color-dodge;
+
+    .task-body {
+      ul {
+        li {
+          padding-inline-start: 1ch;
+          &::marker {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f0c8";
+          }
+        }
+      }
+    }
   }
 
   &-inProgress {
     background-color: $yellow;
     background-image: url(./black-paper.png);
     background-blend-mode: color-dodge;
+
+    .task-body {
+      ul {
+        li {
+          padding-inline-start: 1ch;
+          &::marker {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f152";
+          }
+        }
+      }
+    }
   }
 
   &-complete {
     background-color: $green;
     background-image: url(./black-paper.png);
     background-blend-mode: color-dodge;
+
+    .task-body {
+      ul {
+        li {
+          padding-inline-start: 1ch;
+          &::marker {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f14a";
+          }
+        }
+      }
+    }
   }
 
   &-list {
