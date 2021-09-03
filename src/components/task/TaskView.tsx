@@ -3,15 +3,16 @@ import { Status } from '../../types';
 import './_component.task.scss';
 
 interface TaskViewProps {
-    id: number,
-    task: string,
-    comments?: string,
-    status: Status,
-    updateTask: Function
+    id: number;
+    task: string;
+    comments?: string;
+    status: Status;
+    updateTask: Function;
+    archived?: boolean;
 }
 
 function TaskView(props: TaskViewProps) {
-    const { id, task, comments, status, updateTask } = props;
+    const { id, task, comments, status, updateTask, archived } = props;
     const [currentStatus, setCurrentStatus] = useState(status);
     const [showUpdate, setShowUpdate] = useState(false);
     const statusIcon = {
@@ -74,9 +75,9 @@ function TaskView(props: TaskViewProps) {
     }
 
     return (
-        <div className={`task task-${status}`}>
-            {comments ? 
-            <h3 className="task-heading">{task}</h3>
+        <div className={`task task-${status}${archived ? ' task-archived': ''}`}>
+            {comments 
+            ? <h3 className="task-heading">{task}</h3>
             : <h2 className="task-heading">{task}</h2>
             }
             {comments && <p className="task-body">{renderComments()}</p>}

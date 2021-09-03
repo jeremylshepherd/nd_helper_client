@@ -14,17 +14,11 @@
   margin-right: 0.5em;
   margin-bottom: 0.5em;
   position: relative;
-
-  // &-body {
-  //   ul {
-  //     list-style: square;
-  //   }
-  // }
+  background-image: url(./black-paper.png);
+  background-blend-mode: color-dodge;
 
   &-pending {
     background-color: $red;
-    background-image: url(./black-paper.png);
-    background-blend-mode: color-dodge;
 
     .task-body {
       ul {
@@ -42,8 +36,6 @@
 
   &-inProgress {
     background-color: $yellow;
-    background-image: url(./black-paper.png);
-    background-blend-mode: color-dodge;
 
     .task-body {
       ul {
@@ -61,8 +53,6 @@
 
   &-complete {
     background-color: $green;
-    background-image: url(./black-paper.png);
-    background-blend-mode: color-dodge;
 
     .task-body {
       ul {
@@ -76,6 +66,10 @@
         }
       }
     }
+  }
+
+  &-archived {
+    background-color: $blue;
   }
 
   &-list {
