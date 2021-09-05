@@ -35,7 +35,7 @@ export const Jira = (props: JiraProps) => {
         <div className="jira py-2">
             <a href={url} target="_blank" rel="noreferrer">{refTitle}</a>
             <div className="input-group px-3 py-3">
-                <input type="text" className="form-control" ref={inputRef} value={branch}/>
+                <input type="text" className="form-control" ref={inputRef} value={branch} readOnly/>
                 <div className="input-group-append">
                     <button className="btn btn-info" onClick={copyToClipboard}>Copy</button>
                 </div>

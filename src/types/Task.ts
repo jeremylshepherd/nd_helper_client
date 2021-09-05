@@ -5,5 +5,5 @@ export type Task = {
     task: string,
     comments?: string,
     status: Status,
-    arcvhived?: boolean
+    archived?: boolean
 };

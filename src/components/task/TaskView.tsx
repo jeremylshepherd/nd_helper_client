@@ -9,12 +9,14 @@ interface TaskViewProps {
     status: Status;
     updateTask: Function;
     archived?: boolean;
+    archiveTask?: Function;
 }
 
 function TaskView(props: TaskViewProps) {
-    const { id, task, comments, status, updateTask, archived } = props;
+    const { id, task, comments, status, updateTask, archived, archiveTask } = props;
     const [currentStatus, setCurrentStatus] = useState(status);
     const [showUpdate, setShowUpdate] = useState(false);
+    const [showArchive, setShowArchive] = useState(false);
     const statusIcon = {
         "pending": "redo",
         "inProgress": 'spinner',
@@ -74,13 +76,43 @@ function TaskView(props: TaskViewProps) {
         );
     }
 
+    const archiveThisTask = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
+        const retiredTask = {
+            id,
+            task,
+            comments,
+            status
+        };
+        if (archiveTask) archiveTask(retiredTask);
+        setShowArchive(false);
+    }
+
+    const showArchiveDialog = () => {
+        return (
+            <div className="task-alert">
+                <div className="alert alert-info">      
+                <h5>Archive this task at its current status?</h5>              
+                    <form className="form-group">
+                        <div className="button-group">
+                            <button className="btn btn-danger" onClick={e => {e.preventDefault(); setShowArchive(false)}}>Close</button>
+                            <button className="btn btn-primary" onClick={e => {archiveThisTask(e)}}>Archive</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        )
+    }
+
+    const renderArchiveButton = () => <i className="fas fa-archive" onClick={e => setShowArchive(true)} />;
+
     return (
         <div className={`task task-${status}${archived ? ' task-archived': ''}`}>
             {comments 
             ? <h3 className="task-heading">{task}</h3>
             : <h2 className="task-heading">{task}</h2>
             }
-            {comments && <p className="task-body">{renderComments()}</p>}
+            {comments && <div className="task-body">{renderComments()}</div>}
             <div className="task-footer">
                 <div className="task-footer-date">{dateString}</div>
                 <div className="task-footer-status">
@@ -89,6 +121,8 @@ function TaskView(props: TaskViewProps) {
                 </div>
             </div>
             {showUpdate && renderStatusUpdate() }
+            {!archived && renderArchiveButton()}
+            {showArchive && showArchiveDialog()}
         </div>
 
     );

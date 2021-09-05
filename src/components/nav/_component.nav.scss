@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Train+One&family=Vast+Shadow&display=swap");
+$Lorinda: "Londrina Shadow", cursive;
+$TrainOne: "Train One", cursive;
+$VastShadow: "Vast Shadow", cursive;
+
+.navbar-brand {
+  font-family: $VastShadow;
+  font-size: 1.75em;
+
+  .far {
+    font-size: 1.35rem;
+  }
+}

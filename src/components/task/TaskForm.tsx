@@ -44,7 +44,7 @@ function TaskForm(props: TaskFormProps) {
 
     return (
         <div className="jira-form-container">            
-            <div className="jira-form form-group">
+            <form className="jira-form form-group">
             <h3 className="text-center">Add New Task</h3>
                 <input name="task" placeholder="Task" type="text" className="form-control mt-4" value={task} onChange={e => setTask(e.target.value)} />
                 <textarea name="comments" placeholder="Comments (320 characters max)" maxLength={320} className="form-control mt-4" rows={3} value={comments}  onChange={e => setComments(e.target.value)} />
@@ -52,10 +52,10 @@ function TaskForm(props: TaskFormProps) {
                     { Object.keys(Status).map(key => <option key={key} value={key}>{key}</option>) }
                 </select>
                 <div className="jira-form-btn-group">
-                    <button className="btn btn-info" onClick={submitTask}>Submit</button>
+                    <button className="btn btn-info" onClick={() => { setId(Date.now()); submitTask(); }} disabled={!task || !status}>Submit</button>
                     <button className="btn btn-danger" onClick={() => closeForm()}>Cancel</button>
                 </div>
-            </div>
+            </form>
         </div>
     )
 }
