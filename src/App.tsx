@@ -55,9 +55,7 @@ function App() {
   }
 
   async function archiveTask(item: Task) {
-    console.log('Function hit');
     let data = JSON.stringify(item);
-    console.log('data: ', data);
     const response = await fetch(archiveAPI, {
       method: 'POST',
       headers: {
@@ -66,7 +64,6 @@ function App() {
       body: data
     });
     const status = response.status;
-    console.log('status: ',status);
     if (status === 200) {
       getItems(archiveAPI, setArchiveList);
       getItems(tasksAPI, setTaskList);
