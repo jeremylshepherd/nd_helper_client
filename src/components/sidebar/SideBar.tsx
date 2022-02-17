@@ -23,7 +23,7 @@ function SideBar(props: SideBarProps) {
 
     return (
         <div className={`sidebar${open ? '' : ' closed'}`}>
-            <h3 className="text-center">Jiras and Branches <i className={`fas fa-arrow-alt-circle-${asc ? 'down': 'up'}`} onClick={ () => setAsc(!asc) } /></h3>
+            <h3 className="text-center">{`Jiras and Branches  ${jiras.length} `}<i className={`fas fa-arrow-alt-circle-${asc ? 'down': 'up'}`} onClick={ () => setAsc(!asc) } /></h3>
             <span className="nub" onClick={() => setOpen(!open)} >
                 <i className={`fas fa-chevron-${open ? 'right' : 'left'}`} />
             </span>

@@ -36,6 +36,12 @@ body::-webkit-scrollbar {
   color: white;
 }
 
+.App__title {
+  font-family: Lato;
+  font-weight: 900;
+  font-size: 48px;
+}
+
 .App-link {
   color: #61dafb;
 }

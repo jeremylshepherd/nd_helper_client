@@ -83,7 +83,7 @@ function App() {
     <Router>
     <div className="App">
       <Nav />
-      <h1 className="text-center">Jeremy's Newsdesk Helper</h1>
+      <h1 className="text-center App__title">Jeremy's Newsdesk Helper</h1>
       <h3 className="text-center">Tasks</h3>
       <SideBar jiras={jiraList} />
       <Switch>
