@@ -24,7 +24,8 @@ export const Jira = (props: JiraProps) => {
 
     const renderAlert = () => (
         <div className="alert alert-success fixed-top">
-            <strong>Alright!</strong><span>{`Branch - ${branch} copied to clipboard!`}</span>
+            <strong>{['Alright!', <span>&nbsp;</span>]}</strong>
+            <span>{`Branch - ${branch} copied to clipboard!`}</span>
         </div>
     );
     const refTitle = title.length > 63 
